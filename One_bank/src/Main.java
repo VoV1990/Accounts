@@ -20,17 +20,17 @@ public class Main {
         belarusbank.addClients(sergeev, 160000000);
         belarusbank.addClients(kalinin, 2000);
         belarusbank.addClients(lopata, 87000);
-        belarusbank.addClients(ivanov, 5000);
+        belarusbank.addClients(ivanov, -5000);
         belarusbank.addClients(ivanov, 10000);
         belarusbank.addClients(sergeev, 1500000);
 
-        List<Account> clientAccount = belarusbank.searchClientsAccounts(ivanov.getPassportID());
+        List<Account> clientAccount = belarusbank.searchAccount(ivanov.getPassportID());
         System.out.println(ivanov + ":");
         for (Account account : clientAccount) System.out.println(account);
-        clientAccount = belarusbank.searchClientsAccounts(lopata.getPassportID());
+        clientAccount = belarusbank.searchAccount(lopata.getPassportID());
         System.out.println(lopata + ":");
         for (Account account : clientAccount) belarusbank.blockingAccounts(account.getBankAccountNumber());
-        System.out.println("Sum of all accounts: " + belarusbank.calculationSumOfAllAccounts());
+        System.out.println("Sum of all accounts: " + belarusbank.calculationSumOfAccounts());
         System.out.println("Sum of all positive accounts: " + belarusbank.calculationSumOfPositiveAccounts());
         System.out.println("Sum of all negative accounts: " + belarusbank.calculationSumOfNegativeAccounts());
         chooseOption(belarusbank);
@@ -85,7 +85,7 @@ public class Main {
             case 2 -> {
                 System.out.println("Please enter your passport ID:");
                 String passportID = reader.readLine();
-                List<Account> clientAccount = bank.searchClientsAccounts(passportID);
+                List<Account> clientAccount = bank.searchAccount(passportID);
                 System.out.println("Your accounts:");
                 for (Account account : clientAccount) System.out.println(account);
             }

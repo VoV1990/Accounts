@@ -24,7 +24,7 @@ public class Bank {
         return flag;
     }
 
-    public List<Account> searchClientsAccounts(String passportID) {
+    public List<Account> searchAccount(String passportID) {
         List<Account>clientAccounts = new ArrayList<>();
         for (Map.Entry<Account, Client> map : accounts.entrySet()) {
             if(map.getValue().getPassportID().equals(passportID)) {
@@ -34,7 +34,7 @@ public class Bank {
         return clientAccounts;
     }
 
-    public long calculationSumOfAllAccounts() {
+    public long calculationSumOfAccounts() {
         long sum = 0;
         for (Map.Entry<Account, Client> map : accounts.entrySet()) {
                 sum += map.getKey().getBalance();
@@ -42,7 +42,7 @@ public class Bank {
         return sum;
     }
 
-    public long calculationSumOfCustomerAccounts(String passportID) {
+    public long calculationSumOfAccounts(String passportID) {
         Client client;
         long sum = 0;
         for (Map.Entry<Account, Client> map : accounts.entrySet()) {
